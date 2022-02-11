@@ -12,56 +12,22 @@ namespace FlipCoinSimulation
         {
             //CONSTANTS
             const int HEAD = 1;
-            const int limitofWinningTimes = 21;
+            const int TAIL = 0;
 
-            //VARIABLES
-            int headcounter = 0;
-            int tailcounter = 0;
-
-            while (headcounter < limitofWinningTimes && tailcounter < limitofWinningTimes)
+            Random random = new Random();
+            int flipcoin = random.Next(0, 2);
+            if (flipcoin == HEAD)
             {
-                Random random = new Random();
-                int flipcoin = random.Next(0, 2);
-                if (flipcoin == HEAD)
-                {
-                    //Console.WriteLine("Hurry! Head wins");
-                    headcounter++;
+                Console.WriteLine("Hurry! Head wins");
 
-                }
-                else
-                {
-                    //Console.WriteLine("Boorah! Tail wins");
-                    tailcounter++;
-                }
-            }
-            if (headcounter > tailcounter)
-            {
-                Console.WriteLine($"Head wins by {headcounter - tailcounter} times");
-
-            }
-            else if (tailcounter > headcounter)
-            {
-                Console.WriteLine($"Tail wins by {tailcounter - headcounter}times");
             }
             else
             {
-                const int minDifferenceifTail = 2;
-                while (headcounter - tailcounter >= minDifferenceifTail && tailcounter - headcounter >= minDifferenceifTail) ;
-                {
-                    Random rand = new Random();
-                    int flipcoin = rand.Next(0, 2);
-                    if (flipcoin == HEAD)
-                    {
-                        headcounter++;
-                    }
-                    else
-                    {
-                        tailcounter++;
-                    }
-                }
+                Console.WriteLine("Boorah! Tail wins");
             }
             Console.ReadLine();
         }
     }
 }
+
 
