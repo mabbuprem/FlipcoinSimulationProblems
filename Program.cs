@@ -8,38 +8,45 @@ namespace FlipCoinSimulation
 {
     internal class HEAD_TAIL_GAME
     {
-        static void Main(string[] agrs)
+        static void Main(string[] args)
         {
             //CONSTANTS
             const int HEAD = 1;
             const int TAIL = 0;
-            const int flipCoinconter = 20;
+            const int limitOfWinningTimes = 21;
 
             //VARIABLES
-            int headcounter = 0;
-            int tailcounter = 0;
-            int i = 0;
+            int headCounter = 0;
+            int tailCounter = 0;
 
-            while (i < flipCoinconter)
+            while (headCounter < limitOfWinningTimes && tailCounter < limitOfWinningTimes)
             {
-
-                Random random = new Random();
-                int flipcoin = random.Next(0, 2);
-                if (flipcoin == HEAD)
+                Random rand = new Random();
+                int flipCoin = rand.Next(0, 2);
+                if (flipCoin == HEAD)
                 {
-                    //Console.WriteLine("Hurry! Head wins");
-                    headcounter++;
-
+                    //Console.WriteLine("Hurray! Head wins");
+                    headCounter++;
+                }
+                else
+                {
+                    //Console.WriteLine("Boorah! Tail wins");
+                    tailCounter++;
+                }
+            }
+            if (headCounter > tailCounter)
+            {
+                Console.WriteLine($"Head wins by {headCounter - tailCounter} times");
+            }
+            else if (tailCounter > headCounter)
+            {
+                Console.WriteLine($"Tail wins by {tailCounter - headCounter} times");
             }
             else
             {
-                //Console.WriteLine("Boorah! Tail wins");
-                tailcounter++;
+                Console.WriteLine($"tie");
             }
-        i++;
-                Console.WriteLine($"Head wins {headcounter}");
-                Console.WriteLine($"Tail wins {tailcounter}");
-                Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
