@@ -12,7 +12,6 @@ namespace FlipCoinSimulation
         {
             //CONSTANTS
             const int HEAD = 1;
-            const int TAIL = 0;
             const int limitOfWinningTimes = 21;
 
             //VARIABLES
@@ -44,11 +43,23 @@ namespace FlipCoinSimulation
             }
             else
             {
-                Console.WriteLine($"tie");
+                const int minDifferenceIfTied = 2;
+                while (headCounter - tailCounter >= minDifferenceIfTied && tailCounter - headCounter >= minDifferenceIfTied)
+                {
+                    Random rand = new Random();
+                    int flipCoin = rand.Next(0, 2);
+                    if (flipCoin == HEAD)
+                    {
+                        headCounter++;
+                    }
+                    else
+                    {
+                        tailCounter++;
+                    }
+                }
             }
             Console.ReadLine();
         }
     }
 }
-
 
